@@ -1,5 +1,5 @@
 [
-  {
+  {   "_id": "1sdodst5644",
     "Class name": "Broadcast Journalism",
     "Class image": "https://images.unsplash.com/photo-1557804506-e969d7b32a4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8VFYlMjBOZXdzJTIwUmVwb3J0aW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
     "Instructor name": "John Smith",
@@ -8,7 +8,7 @@
     "Available seats": 10,
     "Price": 200
   },
-  {
+  {   "_id": "1sdoderers5644",
     "Class name": "Public Speaking",
     "Class image": "https://img.freepik.com/premium-photo/asian-business-men-trainer-giving-presentation_39730-1439.jpg?size=626&ext=jpg&ga=GA1.2.2128774218.1683829046&semt=robertav1_2_sidr",
     "Instructor name": "Emma Johnson",
@@ -17,7 +17,7 @@
     "Available seats": 15,
     "Price": 150
   },
-  {
+  {   "_id": "1s34dods5644",
     "Class name": "Digital Media Production",
     "Class image": "https://img.freepik.com/free-photo/asian-professional-video-editor-sitting-multi-monitor-workspace-while-enhancing-movie-footage-quality-using-advanced-software-post-production-house-team-leader-editing-film-frames_482257-42934.jpg?size=626&ext=jpg&ga=GA1.2.2128774218.1683829046&semt=robertav1_2_sidr",
     "Instructor name": "Michael Brown",
@@ -26,7 +26,7 @@
     "Available seats": 20,
     "Price": 250
   },
-  {
+  {   "_id": "1s345dods5644",
     "Class name": "Interview Techniques",
     "Class image": "https://images.unsplash.com/photo-1551135049-8a33b5883817?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SW50ZXJ2aWV3JTIwVGVjaG5pcXVlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
     "Instructor name": "Sophia Anderson",
@@ -35,7 +35,7 @@
     "Available seats": 5,
     "Price": 180
   },
-  {
+  {   "_id": "1sd43tods5644",
     "Class name": "TV News Reporting",
     "Class image": "https://images.unsplash.com/photo-1557804506-e969d7b32a4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8VFYlMjBOZXdzJTIwUmVwb3J0aW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
     "Instructor name": "David Wilson",
@@ -44,7 +44,7 @@
     "Available seats": 10,
     "Price": 200
   },
-  {
+  {   "_id": "1sdods5ert4644",
     "Class name": "Podcasting and Radio Hosting",
     "Class image": "https://plus.unsplash.com/premium_photo-1663091687045-1c7b3ec5953c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8UG9kY2FzdGluZyUyMGFuZCUyMFJhZGlvJTIwSG9zdGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
     "Instructor name": "Olivia Thompson",

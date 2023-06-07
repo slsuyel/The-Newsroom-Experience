@@ -7,7 +7,7 @@ const PopularClassesSection = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('data.json');
+                const response = await fetch('http://localhost:5000/classes');
                 const data = await response.json();
                 setPopularClasses(data);
             } catch (error) {

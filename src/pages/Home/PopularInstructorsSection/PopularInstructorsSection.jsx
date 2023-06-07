@@ -5,8 +5,8 @@ const PopularInstructorsSection = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    // Fetch data from 'data.json'
-    fetch('data.json')
+
+    fetch('http://localhost:5000/classes')
       .then((response) => response.json())
       .then((data) => {
         // Sort instructors by student count in descending order

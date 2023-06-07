@@ -5,7 +5,7 @@ const Instructors = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('data.json')
+    fetch('http://localhost:5000/classes')
       .then(response => response.json())
       .then(jsonData => setData(jsonData))
       .catch(error => console.log(error));
