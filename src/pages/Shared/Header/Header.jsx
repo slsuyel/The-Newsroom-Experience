@@ -11,7 +11,7 @@ import { AuthContext } from "../../../provider/AuthProviders";
 
 function Header() {
     const { user, photo, logOut, } = useContext(AuthContext);
-    console.log(user, photo);
+    // console.log(user, photo);
     const logoutBtn = () => {
         logOut();
     };

@@ -5,12 +5,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { AuthContext } from '../../provider/AuthProviders';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Classes = () => {
     const [classesData, setClassesData] = useState([]);
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [selectedClasses, setSelectedClasses] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:5000/classes')
@@ -20,20 +20,35 @@ const Classes = () => {
     }, []);
 
     const handleSelectClass = (classData) => {
-        if (classData['Available seats'] === 0) {
-            alert('This class is currently full.');
-            return;
-        }
-
-        if (user) {
-            if (selectedClasses.some(selectedClass => selectedClass._id === classData._id)) {
-                alert('Already selected this class.');
-            } else {
-                setSelectedClasses(prevSelectedClasses => [...prevSelectedClasses, classData]);
-                alert('Selected');
-                // Handle the class selection logic here
-                console.log('Selected class:', classData);
-            }
+        if (user && user?.email) {
+            const selectedClass = {
+                email: user.email,
+                selectedId: classData._id,
+                className: classData["Class name"],
+                instructorName: classData["Instructor name"],
+                availableSeats: classData["Available seats"],
+                price: classData.Price
+            };
+            // console.log(selectedClass);
+            fetch('http://localhost:5000/selectedClasses', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(selectedClass)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'You Selected the class successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
         } else {
             navigate('/login');
         }
@@ -45,9 +60,7 @@ const Classes = () => {
             <Row>
                 {classesData.map((classInfo) => (
                     <Col md={4} key={classInfo._id}>
-                        <Card
-                            className={`class-card ${classInfo['Available seats'] === 0 ? 'class-full' : ''}`}
-                        >
+                        <Card>
                             <Card.Img variant='top' src={classInfo['Class image']} alt='Class' />
                             <Card.Body>
                                 <Card.Title>{classInfo['Class name']}</Card.Title>
@@ -60,13 +73,8 @@ const Classes = () => {
                                 </Card.Text>
                                 <Button
                                     onClick={() => handleSelectClass(classInfo)}
-                                    disabled={
-                                        classInfo['Available seats'] === 0 ||
-                                        classInfo['Logged in as admin/instructor'] ||
-                                        selectedClasses.some(selectedClass => selectedClass._id === classInfo._id)
-                                    }
                                 >
-                                    {selectedClasses.some(selectedClass => selectedClass._id === classInfo._id) ? 'Selected' : 'Select'}
+                                    Select
                                 </Button>
                             </Card.Body>
                         </Card>
