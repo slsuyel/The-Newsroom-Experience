@@ -1,8 +1,13 @@
+import PopularClassesSection from "../PopularClassesSection/PopularClassesSection";
+import PopularInstructorsSection from "../PopularInstructorsSection/PopularInstructorsSection";
+import Slider from "../Slider/Slider";
 
 const Home = () => {
     return (
         <div>
-            This is home page
+          <Slider/>
+          <PopularClassesSection/>
+          <PopularInstructorsSection/>
         </div>
     );
 };
