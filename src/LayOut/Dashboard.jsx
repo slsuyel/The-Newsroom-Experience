@@ -6,9 +6,26 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FaBookOpen, FaHome, FaBook, FaMoneyCheck, FaUser, FaChalkboardTeacher, FaSchool, FaShoppingCart } from 'react-icons/fa';
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProviders";
+import UseUserRole from "../pages/hooks/UseUserRole/UseUserRole";
+import { Button, Spinner } from "react-bootstrap";
 
 const Dashboard = () => {
     const user = useContext(AuthContext)
+
+    const [userRole, isUserRoleLoading] = UseUserRole()
+    console.log(userRole);
+    if (isUserRoleLoading) {
+        return <div className="text-center mt-5"><Button variant="primary" disabled >
+            <Spinner
+                as="span"
+                animation="grow"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+            />
+            Loading...
+        </Button></div>
+    }
     return (
         <div className='row w-100 mx-auto' >
             <h2 className="text-center">Dashboard</h2>
@@ -19,16 +36,16 @@ const Dashboard = () => {
                         <FaHome />  Dashboard
                     </NavLink></li>
                     {
-                        user && user.role === "instructor" ? <>
-                            <li> <NavLink className="fs-5 mx-2 text-decoration-none" to="/">
+                        user && userRole === "instructor" ? <>
+                            <li> <NavLink className="fs-5 mx-2 text-decoration-none" to="/dashboard/addclasses">
                                 <FaBookOpen />  Add a Class
                             </NavLink></li>
-                            <li>  <NavLink className="fs-5 mx-2 text-decoration-none" to="/">
+                            <li>  <NavLink className="fs-5 mx-2 text-decoration-none" to="/dashboard/myclasses">
                                 <FaBook />   My Classes:
                             </NavLink></li>
 
                         </>
-                            : user && user.role === "admin" ? <>
+                            : user && userRole === "admin" ? <>
                                 <li> <NavLink className="fs-5 mx-2 text-decoration-none" to="/">
                                     <FaBookOpen />  Manage Classes:
                                 </NavLink></li>
@@ -52,7 +69,6 @@ const Dashboard = () => {
                     }
                     <hr />
 
-                    {/*  */}
 
 
                     <li> <NavLink className="fs-5 mx-2 text-decoration-none" to="/">

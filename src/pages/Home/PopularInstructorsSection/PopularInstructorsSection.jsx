@@ -25,7 +25,7 @@ const PopularInstructorsSection = () => {
       <h2 className='text-center my-4'>Popular Instructors</h2>
       <Row>
         {instructors.map((instructor) => (
-          <Col key={instructor.name} className='my-2' md={4} sm={6}>
+          <Col key={instructor._id} className='my-2' md={4} sm={6}>
             <Card>
               <Card.Img variant='top' src={instructor['Class image']} />
               <Card.Body>
