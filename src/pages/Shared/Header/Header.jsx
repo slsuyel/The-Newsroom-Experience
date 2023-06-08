@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProviders";
 
 function Header() {
+
     const { user, photo, logOut, } = useContext(AuthContext);
     // console.log(user, photo);
     const logoutBtn = () => {
@@ -46,7 +47,7 @@ function Header() {
                         {user ? (
                             <>
                                 <>
-                                    <NavLink className="fs-5 mx-2 text-decoration-none" to="/dashboard">
+                                    <NavLink className="fs-5 mx-2 text-decoration-none" to="dashboard/home">
                                         Dashboard
                                     </NavLink>
                                     <img

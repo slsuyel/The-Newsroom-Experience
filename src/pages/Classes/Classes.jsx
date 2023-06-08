@@ -19,6 +19,20 @@ const Classes = () => {
             .catch(error => console.log(error));
     }, []);
 
+/*     useEffect(() => {
+        axios.get('http://localhost:5000/classes')
+            .then(response => {
+                const data = response.data;
+                setClassesData(data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+ */
+
+
+
     const handleSelectClass = (classData) => {
         if (user && user?.email) {
             const selectedClass = {
