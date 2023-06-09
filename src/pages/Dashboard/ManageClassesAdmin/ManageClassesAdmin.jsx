@@ -2,6 +2,7 @@
 import { Button, Spinner, Table } from "react-bootstrap";
 import useClassAll from "../../hooks/useClassAll/useClassAll";
 import { FaCheckCircle, FaCommentDots, FaTrashAlt } from 'react-icons/fa';
+import Swal from "sweetalert2";
 
 const ManageClassesAdmin = () => {
     // eslint-disable-next-line no-unused-vars
@@ -19,6 +20,37 @@ const ManageClassesAdmin = () => {
             Loading...
         </Button></div>
     }
+
+    /* Delete */
+    const handleDeleteClass = item => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/addclass/${item._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
+
     return (
         <div >
             <h3 className="text-center">Total Classes : {allClass?.length} </h3>
@@ -95,7 +127,7 @@ const ManageClassesAdmin = () => {
                                     </button>
                                 </td>
                                 <td>
-                                    <button className="btn btn-danger">
+                                    <button onClick={() => handleDeleteClass(item)} className="btn btn-danger">
                                         <FaTrashAlt />
                                     </button>
                                 </td>
