@@ -13,23 +13,12 @@ const Classes = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('http://localhost:5000/addclass')
             .then(response => response.json())
-            .then(jsonData => setClassesData(jsonData))
+            .then(data => setClassesData(data))
             .catch(error => console.log(error));
     }, []);
 
-/*     useEffect(() => {
-        axios.get('http://localhost:5000/classes')
-            .then(response => {
-                const data = response.data;
-                setClassesData(data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }, []);
- */
 
 
 
@@ -38,10 +27,10 @@ const Classes = () => {
             const selectedClass = {
                 email: user.email,
                 selectedId: classData._id,
-                className: classData["Class name"],
-                instructorName: classData["Instructor name"],
-                availableSeats: classData["Available seats"],
-                price: classData.Price
+                className: classData.className,
+                instructorName: classData.instructorName,
+                availableSeats: classData.availableSeats,
+                price: classData.price
             };
             // console.log(selectedClass);
             fetch('http://localhost:5000/selectedClasses', {
@@ -71,19 +60,20 @@ const Classes = () => {
     return (
         <div className='container'>
             <h1>Classes</h1>
+
             <Row>
                 {classesData.map((classInfo) => (
                     <Col md={4} key={classInfo._id}>
-                        <Card>
-                            <Card.Img variant='top' src={classInfo['Class image']} alt='Class' />
+                        <Card className='my-2'>
+                            <Card.Img variant='top' src={classInfo.classImage} alt='Class' height={'200px'} />
                             <Card.Body>
-                                <Card.Title>{classInfo['Class name']}</Card.Title>
+                                <Card.Title>{classInfo.className}</Card.Title>
                                 <Card.Text>
-                                    Instructor: {classInfo['Instructor name']}
+                                    Instructor: {classInfo.instructorName}
                                     <br />
                                     Available Seats: {classInfo['Available seats']}
                                     <br />
-                                    Price: {classInfo['Price']}
+                                    Price: {classInfo.price}
                                 </Card.Text>
                                 <Button
                                     onClick={() => handleSelectClass(classInfo)}

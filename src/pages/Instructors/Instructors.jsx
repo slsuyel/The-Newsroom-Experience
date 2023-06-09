@@ -1,11 +1,11 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 
 const Instructors = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/classes')
+    fetch('http://localhost:5000/addclass')
       .then(response => response.json())
       .then(jsonData => setData(jsonData))
       .catch(error => console.log(error));
@@ -34,13 +34,13 @@ const Instructors = () => {
             <tr key={index}>
               <td>
                 <img
-                  src={instructor['Instructor image']}
+                  src={instructor?.classImage}
                   alt="Instructor"
                   style={avatarStyle}
                 />
               </td>
-              <td>{instructor['Instructor name']}</td>
-              <td>{instructor['Instructor email']}</td>
+              <td>{instructor?.instructorName}</td>
+              <td>{instructor?.instructorEmail}</td>
             </tr>
           ))}
         </tbody>

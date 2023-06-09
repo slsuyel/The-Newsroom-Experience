@@ -12,6 +12,7 @@ import DashHome from "../pages/Dashboard/DashHome/DashHome";
 import SelectedClasses from "../pages/Dashboard/SelectedClasses/SelectedClasses";
 import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import MyClassInstructure from "../pages/Dashboard/MyClassInstructure/MyClassInstructure";
+import ManageClassesAdmin from "../pages/Dashboard/ManageClassesAdmin/ManageClassesAdmin";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: 'myclasses',
         element: <MyClassInstructure/>
+      },
+      {
+        path: 'manageclasses',
+        element: <ManageClassesAdmin/>
       },
      
     ]

@@ -46,12 +46,15 @@ const Dashboard = () => {
 
                         </>
                             : user && userRole === "admin" ? <>
-                                <li> <NavLink className="fs-5 mx-2 text-decoration-none" to="/">
+                                <li> <NavLink className="fs-5 mx-2 text-decoration-none" to="/dashboard/manageclasses">
                                     <FaBookOpen />  Manage Classes:
                                 </NavLink></li>
-                                <li><NavLink className="fs-5 mx-2 text-decoration-none" to="/">
+
+                                <li>
+                                    <NavLink className="fs-5 mx-2 text-decoration-none" to="/">
                                     <FaUser />  Manage Users:
-                                </NavLink></li>
+                                </NavLink>
+                                </li>
 
                             </> :
                                 <>

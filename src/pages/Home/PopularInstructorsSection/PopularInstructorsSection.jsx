@@ -6,11 +6,11 @@ const PopularInstructorsSection = () => {
 
   useEffect(() => {
 
-    fetch('http://localhost:5000/classes')
-      .then((response) => response.json())
+    fetch('http://localhost:5000/addclass')
+      .then((res) => res.json())
       .then((data) => {
         // Sort instructors by student count in descending order
-        const sortedInstructors = data.sort((a, b) => b.studentCount - a.studentCount);
+        const sortedInstructors = data?.sort((a, b) => b.studentCount - a.studentCount);
         // Get the top 6 instructors
         const topInstructors = sortedInstructors.slice(0, 6);
         setInstructors(topInstructors);
@@ -27,11 +27,11 @@ const PopularInstructorsSection = () => {
         {instructors.map((instructor) => (
           <Col key={instructor._id} className='my-2' md={4} sm={6}>
             <Card>
-              <Card.Img variant='top' src={instructor['Class image']} />
+              <Card.Img variant='top' src={instructor.classImage} height={'200px'}/>
               <Card.Body>
-                <Card.Title>{instructor['Instructor name']}</Card.Title>
-                <Card.Text>Enrolled Students: {instructor.studentCount}</Card.Text>
-                <Card.Text>Class Name: {instructor['Class name']}</Card.Text>
+                <Card.Title>{instructor?.instructorName}</Card.Title>
+                <Card.Text>Enrolled Students: {instructor?.studentCount}</Card.Text>
+                <Card.Text>Class Name: {instructor.className}</Card.Text>
                
               </Card.Body>
             </Card>

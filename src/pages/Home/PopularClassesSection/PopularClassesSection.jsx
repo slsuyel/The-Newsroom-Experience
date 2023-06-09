@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-
+/* 200px */
 const PopularClassesSection = () => {
     const [popularClasses, setPopularClasses] = useState([]);
-
+    // http://localhost:5000/addclass
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/classes');
-                const data = await response.json();
+                const res = await fetch('http://localhost:5000/addclass');
+                const data = await res.json();
                 setPopularClasses(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -17,18 +17,20 @@ const PopularClassesSection = () => {
 
         fetchData();
     }, []);
+    const filteredClasses = popularClasses.sort((a, b) => b.availableSeats - a.availableSeats);
 
     return (
         <Container>
             <h2 className='text-center my-4'>Popular Classes</h2>
             <Row>
-                {popularClasses.map((classItem) => (
-                    <Col key={classItem['Class name']} className='my-2' md={4} sm={6}>
-                        <Card>
-                            <Card.Img variant="top" src={classItem['Class image']} />
+                {filteredClasses.slice(0, 6).map((classItem) => (
+                    <Col key={classItem.className} className='my-2' md={4} sm={6}>
+                        <Card className='shadow'>
+                            <Card.Img variant="top" src={classItem.classImage} height={'200px'} />
                             <Card.Body>
-                                <Card.Title>{classItem['Class name']}</Card.Title>
-                                <Card.Text>Enrolled Students: {classItem.studentCount}</Card.Text>
+                                <Card.Title>{classItem.instructorName}</Card.Title>
+                                <Card.Text>Class Name: {classItem.className}</Card.Text>
+                                <Card.Text>Total Seats: {classItem.availableSeats}</Card.Text>
                                 <Button variant="primary">Enroll now</Button>
                             </Card.Body>
                         </Card>
