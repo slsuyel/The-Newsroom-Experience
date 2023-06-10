@@ -1,10 +1,29 @@
-import { Table } from "react-bootstrap";
+import { Button, Spinner, Table } from "react-bootstrap";
 import useAddClass from "../../hooks/useAddClass/useAddClass";
 
 const MyClassInstructure = () => {
     // eslint-disable-next-line no-unused-vars
     const [addclass, refetch, isLoading] = useAddClass()
-    console.log(addclass);
+    if (isLoading) {
+        return <div className="text-center mt-5"><Button variant="primary" disabled >
+            <Spinner
+                as="span"
+                animation="grow"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+            />
+            Loading...
+        </Button></div>
+    }
+
+    const handleUpdateClass = (classItem) => {
+        /*need update : className, availableSeats,price*/
+        console.log(classItem);
+    }
+
+
+
     return (
         <div>
             <Table striped bordered hover>
@@ -19,6 +38,7 @@ const MyClassInstructure = () => {
                     </tr>
                 </thead>
                 <tbody>
+
                     {
                         addclass.map((classItem) => (
                             <tr key={classItem._id}>
@@ -26,9 +46,14 @@ const MyClassInstructure = () => {
                                 <td>{classItem.availableSeats || 0}</td>
                                 <td>{classItem?.totalenrolled || 0}</td>
                                 <td>{classItem?.status}</td>
-                                <td>{classItem?.feedback || 'No Feedback'}</td>
                                 <td>
-                                    <button className="btn-primary btn">Update class</button>
+                                    {
+                                        classItem?.status === "denied" ? classItem?.feedback : ''
+                                    }
+
+                                </td>
+                                <td>
+                                    <button onClick={() => handleUpdateClass(classItem)} className="btn-primary btn">Update class</button>
                                 </td>
                             </tr>
                         ))
