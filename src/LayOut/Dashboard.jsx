@@ -13,7 +13,7 @@ const Dashboard = () => {
     const user = useContext(AuthContext)
 
     const [userRole, isUserRoleLoading] = UseUserRole()
-    console.log(userRole);
+    // console.log(userRole);
     if (isUserRoleLoading) {
         return <div className="text-center mt-5"><Button variant="primary" disabled >
             <Spinner
@@ -51,9 +51,9 @@ const Dashboard = () => {
                                 </NavLink></li>
 
                                 <li>
-                                    <NavLink className="fs-5 mx-2 text-decoration-none" to="/">
-                                    <FaUser />  Manage Users:
-                                </NavLink>
+                                    <NavLink className="fs-5 mx-2 text-decoration-none" to="/dashboard/users">
+                                        <FaUser />  Manage Users:
+                                    </NavLink>
                                 </li>
 
                             </> :
