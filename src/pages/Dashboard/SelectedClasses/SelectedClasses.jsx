@@ -42,9 +42,7 @@ const SelectedClasses = () => {
         <div>
             <h2 className="text-center">
                 My Selected Classes {selectedClass?.length}
-                {
-                    console.log(selectedClass)
-                }
+               
             </h2>
             <Table striped bordered hover size="sm">
                 <thead>

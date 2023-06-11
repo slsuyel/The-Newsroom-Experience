@@ -6,7 +6,6 @@ const DashHome = () => {
     const { user } = useContext(AuthContext)
     return (
         <div className="border">
-
             <h3 className="border-2 border-bottom border-danger border-top col-md-4 mb-5 mx-auto py-2 text-center mt-5">{user.displayName}'s Dashboard</h3>
             <div className="align-items-center d-sm-flex justify-content-between mx-3">
                 <h3>{user.displayName}</h3>

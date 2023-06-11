@@ -71,7 +71,7 @@ const Classes = () => {
 
     return (
         <div className='container'>
-            <h1>Classes</h1>
+            <h1 className='border-2 border-bottom border-danger border-top col-md-4 mb-5 mx-auto py-2 text-center mt-5'>Classes</h1>
 
             <Row>
                 {classesData.map((classInfo) => (
