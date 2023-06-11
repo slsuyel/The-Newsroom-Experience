@@ -39,8 +39,8 @@ const Main = () => {
 
   return (
     <div style={themeMode === "dark" ? darkThemeStyles : lightThemeStyles}>
-      
-      <button className={`${themeMode === "dark" ? "dark-theme" : "light-theme"}`} onClick={toggleTheme}>
+
+      <button className= {`border-0 ${themeMode === "dark" ? "dark-theme" : "light-theme"}`} onClick={toggleTheme}>
         <FaMoon />
       </button>
 

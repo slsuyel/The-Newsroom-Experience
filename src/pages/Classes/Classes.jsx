@@ -6,22 +6,21 @@ import Col from 'react-bootstrap/Col';
 import { AuthContext } from '../../provider/AuthProviders';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import UseUserRole from '../hooks/UseUserRole/UseUserRole';
+import { Spinner } from 'react-bootstrap';
 
 const Classes = () => {
     const [classesData, setClassesData] = useState([]);
     const { user } = useContext(AuthContext);
+    const [userRole, isUserRoleLoading] = UseUserRole()
+    // console.log(userRole);
     const navigate = useNavigate();
-
     useEffect(() => {
         fetch('http://localhost:5000/addclass')
-            .then(response => response.json())
+            .then(res => res.json())
             .then(data => setClassesData(data))
             .catch(error => console.log(error));
     }, []);
-
-
-
-
     const handleSelectClass = (classData) => {
         if (user && user?.email) {
             const selectedClass = {
@@ -57,6 +56,21 @@ const Classes = () => {
         }
     };
 
+    if (user && isUserRoleLoading) {
+        return <div className="text-center mt-5"><Button variant="primary" disabled >
+            <Spinner
+                as="span"
+                animation="grow"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+            />
+            Loading...
+        </Button></div>
+    }
+
+
+
     return (
         <div className='container'>
             <h1>Classes</h1>
@@ -71,15 +85,12 @@ const Classes = () => {
                                 <Card.Text>
                                     Instructor: {classInfo.instructorName}
                                     <br />
-                                    Available Seats: {classInfo['Available seats']}
+                                    Available Seats: {classInfo.availableSeats}
                                     <br />
                                     Price: {classInfo.price}
                                 </Card.Text>
-                                <Button
-                                    onClick={() => handleSelectClass(classInfo)}
-                                >
-                                    Select
-                                </Button>
+                                <Button disabled={userRole === 'admin' || userRole === 'instructor'} onClick={() => handleSelectClass(classInfo)}> Select   </Button>
+
                             </Card.Body>
                         </Card>
                     </Col>

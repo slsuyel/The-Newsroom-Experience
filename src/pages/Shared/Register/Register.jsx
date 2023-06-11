@@ -117,8 +117,8 @@ const Register = () => {
                         <input
                             type="text"
                             className="form-control"
-                            id="photoURL" // Change the id to "photoURL"
-                            {...register('photoURL', { required: true })} // Change the field name here
+                            id="photoURL" 
+                            {...register('photoURL', { required: true })} 
                         />
                         {errors.photoUrl && <span className="text-danger">Photo URL is required</span>}
                     </div>
