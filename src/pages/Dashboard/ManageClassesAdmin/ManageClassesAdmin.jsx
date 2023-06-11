@@ -1,12 +1,17 @@
 
 // export default ManageClassesAdmin; 
-import  { useState } from "react";
+import { useState } from "react";
 import { Button, Spinner, Table, Modal } from "react-bootstrap";
 import useClassAll from "../../hooks/useClassAll/useClassAll";
 import { FaCheckCircle, FaCommentDots, FaBan } from 'react-icons/fa';
 import Swal from "sweetalert2";
 
 const ManageClassesAdmin = () => {
+
+
+  /*  */
+
+
   const [allClass, refetch, isLoading] = useClassAll();
   const [showModal, setShowModal] = useState(false); // State to control the modal visibility
   const [feedback, setFeedback] = useState(""); // State to store the feedback text
@@ -23,6 +28,7 @@ const ManageClassesAdmin = () => {
   }
 
   const handleApprovedClass = (id) => {
+
     fetch(`https://ass-12-server-slsuyel.vercel.app/addclass/${id}`, {
       method: 'PATCH',
       headers: {
@@ -41,6 +47,7 @@ const ManageClassesAdmin = () => {
           );
         }
       });
+
   };
 
   const handleDenyBtn = (id) => {
@@ -128,12 +135,19 @@ const ManageClassesAdmin = () => {
                 <td>$ {item.price}</td>
                 <td>{item.status}</td>
                 <td className="text-center">
-                  <button onClick={() => handleApprovedClass(item._id)} className="btn rounded-2 text-bg-success">
+                  {/* any btn will clicked , 2 btn will be disable*/}
+                  <button onClick={() => handleApprovedClass(item._id)}
+
+                    className="btn rounded-2 text-bg-success">
                     <FaCheckCircle />
                   </button>
                 </td>
                 <td>
-                  <button onClick={() => handleDenyBtn(item._id)} className="btn btn-danger">
+
+                  <button onClick={() => handleDenyBtn(item._id)}
+                    className="btn btn-danger"
+
+                  >
                     <FaBan />
                   </button>
                 </td>

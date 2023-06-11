@@ -6,15 +6,15 @@ import { AuthContext } from "../provider/AuthProviders";
 
 const AdminRoute = ({ children }) => {
     const { user } = useContext(AuthContext)
-    const [userRole, ] = UseUserRole()
+    const [userRole,] = UseUserRole()
     const location = useLocation();
-    console.log(user, userRole);
+    // console.log(user, userRole);
 
     // if (!user && isUserRoleLoading) {
     //     return <div>Loading...</div>
     // }
 
-    if ( userRole === 'admin') {
+    if (user && userRole === 'admin') {
         return children;
     }
     return <Navigate to="/" state={{ from: location }} replace></Navigate>
