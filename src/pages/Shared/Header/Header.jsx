@@ -18,7 +18,7 @@ function Header() {
     };
 
     return (
-        <Navbar bg="light" className="container " expand="lg">
+        <Navbar className="container border-bottom border-white" expand="lg">
             <Container fluid>
                 <Navbar.Brand as={Link} to="/" className="navbar-brand w-50">
                     <img

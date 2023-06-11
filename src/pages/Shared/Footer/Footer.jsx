@@ -1,8 +1,8 @@
 
 const Footer = () => {
     return (
-        <footer className="bd-footer bg-body-tertiary pt-5" style={{ backgroundColor: "#F8E4E5" }}>
-        <div className="container  px-4 px-md-3 text-body-secondary">
+        <footer className=" pt-5">
+        <div className="container  px-4 px-md-3 ">
           <div className="row">
             <div className="col-lg-3 mb-3">
               <div className="list-unstyled small">

@@ -4,7 +4,7 @@ import { BiSupport } from 'react-icons/bi';
 import { Fade } from "react-awesome-reveal";
 const AdditionalInfo = () => {
     return (
-        <Container className="mt-5 shadow-lg">
+        <Container className="mt-5 shadow-lg py-5">
             <Row>
             <Fade>
                 <h2 className="border-2 border-bottom border-danger border-top col-md-4 mb-5 mx-auto py-2 text-center">Why We Are Best</h2>

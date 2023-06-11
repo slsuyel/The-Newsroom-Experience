@@ -85,7 +85,7 @@ const Dashboard = () => {
                     </NavLink></li>
                 </ul>
             </div>
-            <div className="col-md-9 bg-secondary">
+            <div className="col-md-9 ">
                 <Outlet />
             </div>
         </div>
