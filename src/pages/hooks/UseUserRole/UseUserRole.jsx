@@ -9,7 +9,7 @@ const UseUserRole = () => {
     const { data: userRole, isLoading: isUserRoleLoading } = useQuery({
         queryKey: ['userRole', user?.email],
         queryFn: async () => {
-            const res = await fetch(`https://ass-12-server-eight.vercel.app/users/admin/${user?.email}`);
+            const res = await fetch(`https://ass-12-server-slsuyel.vercel.app/users/admin/${user?.email}`);
             const data = await res.json();
             // console.log('user role response', data);
             return data.role;

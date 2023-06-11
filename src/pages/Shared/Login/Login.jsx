@@ -28,10 +28,10 @@ const Login = () => {
                 navigate(from, { replace: true });
             });
     };
-
+/* border-2 border-bottom border-danger border-top col-md-4 mb-5 mx-auto py-2 text-center mt-5 */
     return (
         <div className='row mx-auto'>
-            <h2 className='text-center mb-5'>Login Page</h2>
+            <h2 className='text-center mb-5 '>Login Page</h2>
             <div className='col-md-6'>
                 <img src="https://i.gifer.com/X0XF.gif" alt="" className='w-100' />
             </div>

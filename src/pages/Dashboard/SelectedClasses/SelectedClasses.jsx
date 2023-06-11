@@ -18,7 +18,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://ass-12-server-eight.vercel.app/selectedClasses/${classItem._id}`, {
+                fetch(`https://ass-12-server-slsuyel.vercel.app/selectedClasses/${classItem._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -35,8 +35,6 @@ const SelectedClasses = () => {
             }
         })
     }
-
-
 
     return (
         <div>

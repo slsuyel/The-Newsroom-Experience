@@ -8,7 +8,7 @@ const PopularClassesSection = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('https://ass-12-server-eight.vercel.app/addclass');
+                const res = await fetch('https://ass-12-server-slsuyel.vercel.app/addclass');
                 const data = await res.json();
                 setPopularClasses(data);
             } catch (error) {

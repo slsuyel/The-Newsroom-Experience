@@ -8,7 +8,7 @@ function ManageUsers() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://ass-12-server-eight.vercel.app/users');
+                const response = await fetch('https://ass-12-server-slsuyel.vercel.app/users');
                 if (!response.ok) {
                     throw new Error('Failed to fetch users');
                 }
@@ -24,7 +24,7 @@ function ManageUsers() {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('https://ass-12-server-eight.vercel.app/users');
+            const response = await fetch('https://ass-12-server-slsuyel.vercel.app/users');
             if (!response.ok) {
                 throw new Error('Failed to fetch users');
             }
@@ -37,7 +37,7 @@ function ManageUsers() {
 
     const makeAdmin = (user) => {
         const role = "admin";
-        fetch(`https://ass-12-server-eight.vercel.app/users/${user._id}`, {
+        fetch(`https://ass-12-server-slsuyel.vercel.app/users/${user._id}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json",
@@ -59,7 +59,7 @@ function ManageUsers() {
 
     const makeInstructor = (user) => {
         const role = "instructor";
-        fetch(`https://ass-12-server-eight.vercel.app/users/${user._id}`, {
+        fetch(`https://ass-12-server-slsuyel.vercel.app/users/${user._id}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json",
