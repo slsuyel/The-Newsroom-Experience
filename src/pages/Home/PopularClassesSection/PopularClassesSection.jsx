@@ -23,7 +23,7 @@ const PopularClassesSection = () => {
     return (
         <Container>
             <Fade>
-                <h2 className='text-center my-4'>Popular Classes</h2>
+                <h2 className='border-2 border-bottom border-danger border-top col-md-4 mb-5 mx-auto py-2 text-center mt-5'>Popular Classes</h2>
             </Fade>
             <Row>
                 {filteredClasses.slice(0, 6).map((classItem) => (

@@ -5,7 +5,7 @@ import { Button, Col, Spinner } from 'react-bootstrap';
 
 function Slider() {
     const [allClass, , isLoading] = useClassAll();
-    console.log(allClass);
+    // console.log(allClass);
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex) => {
@@ -24,7 +24,7 @@ function Slider() {
     }
 
     return (
-        <div className="row container mx-auto">
+        <div className="row container mx-auto shadow-lg">
             <Col sm={12} md={6}>
                 <h4>Explore courses and programs at The Newsroom Experience.</h4>
                 <p className="small-text">

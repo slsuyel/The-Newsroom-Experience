@@ -23,7 +23,7 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        const saveUser = { name: data.name, email: data.email }
+                        const saveUser = { name: data.name, email: data.email, dp: data.photoURL }
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {
@@ -45,9 +45,6 @@ const Register = () => {
                                     navigate('/');
                                 }
                             })
-
-
-
                     })
                     .catch(error => console.log(error))
             })
@@ -120,8 +117,8 @@ const Register = () => {
                         <input
                             type="text"
                             className="form-control"
-                            id="photoUrl"
-                            {...register('photoUrl', { required: true })}
+                            id="photoURL" // Change the id to "photoURL"
+                            {...register('photoURL', { required: true })} // Change the field name here
                         />
                         {errors.photoUrl && <span className="text-danger">Photo URL is required</span>}
                     </div>
@@ -130,7 +127,7 @@ const Register = () => {
                     </div>
                     <button type="submit" className="btn btn-primary my-2">Register</button>
                 </form>
-                <SocialLogin/>
+                <SocialLogin />
             </div>
 
         </div>

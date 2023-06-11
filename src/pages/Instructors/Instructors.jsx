@@ -11,12 +11,7 @@ const Instructors = () => {
       .catch(error => console.log(error));
   }, []);
 
-  const avatarStyle = {
-    width: '50px',
-    height: '50px',
-    borderRadius: '50%',
-    objectFit: 'cover',
-  };
+
 
   return (
     <div className='container'>
@@ -33,11 +28,15 @@ const Instructors = () => {
           {data.map((instructor, index) => (
             <tr key={index}>
               <td>
-                <img
-                  src={instructor?.classImage}
-                  alt="Instructor"
-                  style={avatarStyle}
-                />
+              <img
+  src={instructor.photoURL || "https://www.svgrepo.com/show/500470/avatar.svg"}
+  alt="Instructor"
+  width={'90px'}
+  height={'90px'}
+  className='rounded-circle mt-3'
+/>
+
+
               </td>
               <td>{instructor?.instructorName}</td>
               <td>{instructor?.instructorEmail}</td>

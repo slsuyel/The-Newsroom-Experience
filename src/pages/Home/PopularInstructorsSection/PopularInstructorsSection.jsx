@@ -1,31 +1,30 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Flip } from 'react-awesome-reveal';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { AuthContext } from '../../../provider/AuthProviders';
 
 const PopularInstructorsSection = () => {
   const [instructors, setInstructors] = useState([]);
-  const { photo } = useContext(AuthContext)
   useEffect(() => {
-
     fetch('http://localhost:5000/addclass')
       .then((res) => res.json())
       .then((data) => {
-        // Sort instructors by student count in descending order
         const sortedInstructors = data?.sort((a, b) => b.studentCount - a.studentCount);
         // Get the top 6 instructors
         const topInstructors = sortedInstructors.slice(0, 6);
         setInstructors(topInstructors);
+        // console.log('------ins', topInstructors);
       })
       .catch((error) => {
         console.log('Error fetching data:', error);
       });
   }, []);
 
+
+
   return (
     <Container>
       <Flip>
-        <h2 className='text-center my-4'>Popular Instructors</h2>
+        <h2 className='border-2 border-bottom border-danger border-top col-md-4 mb-5 mx-auto py-2 text-center mt-5'>Popular Instructors</h2>
       </Flip>
       <Row>
         {instructors.map((instructor) => (
@@ -33,7 +32,20 @@ const PopularInstructorsSection = () => {
             <Card className='card text-center'>
 
               <div className="align-items-center d-flex justify-content-between mx-4">
-                <img src={photo || ''} width={'90px'} height={'90px'} className='rounded-circle  mt-3' alt="" />
+                {/* <img src={instructor.photoURL } width={'90px'} height={'90px'} className='rounded-circle  mt-3' alt="" /> || */}
+                {/* <FaUserCircle /> */}
+
+                <img
+                  src={instructor.photoURL || "https://www.svgrepo.com/show/500470/avatar.svg"}
+                  alt="Instructor"
+                  width={'90px'}
+                  height={'90px'}
+                  className='rounded-circle mt-3'
+                />
+
+
+
+
                 <div>
                   <Card.Title> Name : {instructor?.instructorName}</Card.Title>
                   <Card.Text>Enrolled Students: <span>{instructor?.studentCount || '00'}</span> </Card.Text>

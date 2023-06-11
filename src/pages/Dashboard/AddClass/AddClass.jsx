@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const AddClass = () => {
   const { user } = useContext(AuthContext);
-
+  console.log(user);
   const [className, setClassName] = useState('');
   const [classImage, setClassImage] = useState(null); // Store the selected image file
   const [availableSeats, setAvailableSeats] = useState(0);
@@ -36,6 +36,7 @@ const AddClass = () => {
           className,
           classImage: imageUrl,
           instructorName: user?.displayName,
+          photoURL: user?.photoURL,
           instructorEmail: user?.email,
           availableSeats,
           price,
