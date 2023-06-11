@@ -43,7 +43,7 @@ const AddClass = () => {
           status: 'pending',
         };
 
-        fetch('http://localhost:5000/addclass', {
+        fetch('https://ass-12-server-eight.vercel.app/addclass', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

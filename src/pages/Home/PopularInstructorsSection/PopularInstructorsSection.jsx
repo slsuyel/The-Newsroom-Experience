@@ -5,7 +5,7 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 const PopularInstructorsSection = () => {
   const [instructors, setInstructors] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/addclass')
+    fetch('https://ass-12-server-eight.vercel.app/addclass')
       .then((res) => res.json())
       .then((data) => {
         const sortedInstructors = data?.sort((a, b) => b.studentCount - a.studentCount);

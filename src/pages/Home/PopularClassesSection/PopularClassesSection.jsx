@@ -4,11 +4,11 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 /* 200px */
 const PopularClassesSection = () => {
     const [popularClasses, setPopularClasses] = useState([]);
-    // http://localhost:5000/addclass
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('http://localhost:5000/addclass');
+                const res = await fetch('https://ass-12-server-eight.vercel.app/addclass');
                 const data = await res.json();
                 setPopularClasses(data);
             } catch (error) {

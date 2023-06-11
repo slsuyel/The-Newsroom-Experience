@@ -23,7 +23,7 @@ const ManageClassesAdmin = () => {
   }
 
   const handleApprovedClass = (id) => {
-    fetch(`http://localhost:5000/addclass/${id}`, {
+    fetch(`https://ass-12-server-eight.vercel.app/addclass/${id}`, {
       method: 'PATCH',
       headers: {
         "content-type": "application/json",
@@ -44,7 +44,7 @@ const ManageClassesAdmin = () => {
   };
 
   const handleDenyBtn = (id) => {
-    fetch(`http://localhost:5000/addclass/${id}`, {
+    fetch(`https://ass-12-server-eight.vercel.app/addclass/${id}`, {
       method: 'PATCH',
       headers: {
         "content-type": "application/json",
@@ -75,7 +75,7 @@ const ManageClassesAdmin = () => {
   };
 
   const handleSubmitFeedback = () => {
-    fetch(`http://localhost:5000/addClass/${selectedClassId}`, {
+    fetch(`https://ass-12-server-eight.vercel.app/addClass/${selectedClassId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
