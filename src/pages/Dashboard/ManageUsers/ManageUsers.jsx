@@ -6,23 +6,10 @@ function ManageUsers() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('https://ass-12-server-slsuyel.vercel.app/users');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch users');
-                }
-                const data = await response.json();
-                setUsers(data);
-            } catch (error) {
-                console.error('Error fetching users:', error);
-            }
-        };
-
         fetchData();
     }, []);
 
-    const fetchUsers = async () => {
+    const fetchData = async () => {
         try {
             const response = await fetch('https://ass-12-server-slsuyel.vercel.app/users');
             if (!response.ok) {
@@ -35,8 +22,7 @@ function ManageUsers() {
         }
     };
 
-    const makeAdmin = (user) => {
-        const role = "admin";
+    const updateUserRole = (user, role) => {
         fetch(`https://ass-12-server-slsuyel.vercel.app/users/${user._id}`, {
             method: 'PUT',
             headers: {
@@ -47,38 +33,15 @@ function ManageUsers() {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    fetchUsers();
+                    fetchData();
                     Swal.fire(
                         'Good!',
-                        `${user?.name} is admin now!`,
+                        `${user?.name} is ${role} now!`,
                         'success'
                     );
                 }
             });
     };
-
-    const makeInstructor = (user) => {
-        const role = "instructor";
-        fetch(`https://ass-12-server-slsuyel.vercel.app/users/${user._id}`, {
-            method: 'PUT',
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({ role })
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    fetchUsers();
-                    Swal.fire(
-                        'Good!',
-                        `${user?.name} is instructor now!`,
-                        'success'
-                    );
-                }
-            });
-    };
-
 
     return (
         <Container>
@@ -101,8 +64,18 @@ function ManageUsers() {
                                     <td>{user?.role}</td>
                                     <td>
                                         <ButtonGroup className='gap-2'>
-                                            <Button onClick={() => makeAdmin(user)}>Make Admin</Button>
-                                            <Button onClick={() => makeInstructor(user)}>Make Instructor</Button>
+                                            <Button
+                                                onClick={() => updateUserRole(user, 'admin')}
+                                                disabled={user?.role === 'admin'}
+                                            >
+                                                Make Admin
+                                            </Button>
+                                            <Button
+                                                onClick={() => updateUserRole(user, 'instructor')}
+                                                disabled={user?.role === 'instructor'}
+                                            >
+                                                Make Instructor
+                                            </Button>
                                         </ButtonGroup>
                                     </td>
                                 </tr>
@@ -116,3 +89,5 @@ function ManageUsers() {
 }
 
 export default ManageUsers;
+
+

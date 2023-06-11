@@ -26,9 +26,6 @@ const AuthProviders = ({ children }) => {
   const [photo, setPhoto] = useState("");
   const [name, setName] = useState("");
 
-  /* --------------- */
-  console.log(user);
-
   const createUser = (email, password) => {
     setLoading(true);
     //  console.log(email, password);
@@ -36,6 +33,7 @@ const AuthProviders = ({ children }) => {
   };
 
   /* ------------------ */
+
   const login = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
