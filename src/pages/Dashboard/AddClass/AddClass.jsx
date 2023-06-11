@@ -76,7 +76,7 @@ const AddClass = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="font-monospace m-2 text-bg-secondary">
+    <Form onSubmit={handleSubmit} className="bg-secondary-subtle font-monospace m-2 p-3 rounded">
       <Form.Group controlId="formClassName">
         <Form.Label>Class name:</Form.Label>
         <Form.Control type="text" value={className} onChange={(e) => setClassName(e.target.value)} required />
@@ -111,7 +111,7 @@ const AddClass = () => {
           required
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" className='mt-3' type="submit">
         Add
       </Button>
     </Form>

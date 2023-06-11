@@ -27,7 +27,7 @@ const Dashboard = () => {
         </Button></div>
     }
     return (
-        <div className='row w-100 mx-auto mt-4' >
+        <div className='bg-dark-subtle mx-auto p-3 row w-100' >
             <div className="col-md-3">
                 <ul className="list-unstyled">
                     <li> <NavLink className="fs-5 mx-2 text-decoration-none" to="/dashboard/home">
