@@ -22,9 +22,9 @@ function Header() {
             <Container fluid>
                 <Navbar.Brand as={Link} to="/" className="navbar-brand w-50">
                     <img
-                        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXqzmeP64kFR2BNfkWSHSxN_2F1aSjdDmyDA&usqp=CAU'
+                        src='https://i.ibb.co/3zRyY5q/logo.png'
                         alt=""
-                        width={"170px"}
+                        width={"200px"}
                         className="img-fluid rounded-1"
                     />
                 </Navbar.Brand>

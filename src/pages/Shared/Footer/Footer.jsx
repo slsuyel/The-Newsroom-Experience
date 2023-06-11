@@ -6,7 +6,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-lg-3 mb-3">
               <div className="list-unstyled small">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXqzmeP64kFR2BNfkWSHSxN_2F1aSjdDmyDA&usqp=CAU" width={'180px'} alt="News Presenter School Logo" />
+                <img src="https://i.ibb.co/3zRyY5q/logo.png" width={'180px'} alt="News Presenter School Logo" />
                 <p className="mb-2">
                   News Presenter School is a leading institution dedicated to training aspiring news presenters. Our programs provide comprehensive training in journalism, broadcasting, and on-camera presentation skills.
                 </p>

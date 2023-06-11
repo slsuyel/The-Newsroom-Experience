@@ -11,8 +11,6 @@ const Instructors = () => {
       .catch(error => console.log(error));
   }, []);
 
-
-
   return (
     <div className='container'>
       <h1>Instructors</h1>
@@ -31,9 +29,9 @@ const Instructors = () => {
               <img
   src={instructor.photoURL || "https://www.svgrepo.com/show/500470/avatar.svg"}
   alt="Instructor"
-  width={'90px'}
-  height={'90px'}
-  className='rounded-circle mt-3'
+  width={'40px'}
+  height={'40px'}
+  className='rounded-circle '
 />
 
 

@@ -24,7 +24,7 @@ function Slider() {
     }
 
     return (
-        <div className="row container mx-auto shadow-lg">
+        <div className="row container mx-auto shadow-lg mt-5 py-3">
             <Col sm={12} md={6}>
                 <h4>Explore courses and programs at The Newsroom Experience.</h4>
                 <p className="small-text">
