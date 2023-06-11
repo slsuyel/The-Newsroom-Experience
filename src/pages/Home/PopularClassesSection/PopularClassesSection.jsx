@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Fade, } from 'react-awesome-reveal';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 /* 200px */
 const PopularClassesSection = () => {
@@ -21,15 +22,20 @@ const PopularClassesSection = () => {
 
     return (
         <Container>
-            <h2 className='text-center my-4'>Popular Classes</h2>
+            <Fade>
+                <h2 className='text-center my-4'>Popular Classes</h2>
+            </Fade>
             <Row>
                 {filteredClasses.slice(0, 6).map((classItem) => (
                     <Col key={classItem.className} className='my-2' md={4} sm={6}>
                         <Card className='shadow'>
                             <Card.Img variant="top" src={classItem.classImage} height={'200px'} />
                             <Card.Body>
-                                <Card.Title>{classItem.instructorName}</Card.Title>
+                                <Card.Title>Instructors : {classItem.instructorName}</Card.Title>
+
+
                                 <Card.Text>Class Name: {classItem.className}</Card.Text>
+
                                 <Card.Text>Total Seats: {classItem.availableSeats}</Card.Text>
                                 <Button variant="primary">Enroll now</Button>
                             </Card.Body>

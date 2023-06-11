@@ -1,9 +1,11 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { Flip } from 'react-awesome-reveal';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import { AuthContext } from '../../../provider/AuthProviders';
 
 const PopularInstructorsSection = () => {
   const [instructors, setInstructors] = useState([]);
-
+  const { photo } = useContext(AuthContext)
   useEffect(() => {
 
     fetch('http://localhost:5000/addclass')
@@ -22,17 +24,26 @@ const PopularInstructorsSection = () => {
 
   return (
     <Container>
-      <h2 className='text-center my-4'>Popular Instructors</h2>
+      <Flip>
+        <h2 className='text-center my-4'>Popular Instructors</h2>
+      </Flip>
       <Row>
         {instructors.map((instructor) => (
           <Col key={instructor._id} className='my-2' md={4} sm={6}>
-            <Card>
-              <Card.Img variant='top' src={instructor.classImage} height={'200px'}/>
+            <Card className='card text-center'>
+
+              <div className="align-items-center d-flex justify-content-between mx-4">
+                <img src={photo || ''} width={'90px'} height={'90px'} className='rounded-circle  mt-3' alt="" />
+                <div>
+                  <Card.Title> Name : {instructor?.instructorName}</Card.Title>
+                  <Card.Text>Enrolled Students: <span>{instructor?.studentCount || '00'}</span> </Card.Text>
+                  <p>Email :{instructor?.instructorEmail} </p>
+                </div>
+              </div>
               <Card.Body>
-                <Card.Title>{instructor?.instructorName}</Card.Title>
-                <Card.Text>Enrolled Students: {instructor?.studentCount}</Card.Text>
+
                 <Card.Text>Class Name: {instructor.className}</Card.Text>
-               
+
               </Card.Body>
             </Card>
           </Col>

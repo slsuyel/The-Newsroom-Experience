@@ -35,9 +35,9 @@ function ManageUsers() {
         }
     };
 
-    const makeAdmin = (id) => {
+    const makeAdmin = (user) => {
         const role = "admin";
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`http://localhost:5000/users/${user._id}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json",
@@ -50,16 +50,16 @@ function ManageUsers() {
                     fetchUsers();
                     Swal.fire(
                         'Good!',
-                        'Name is admin now!',
+                        `${user?.name} is admin now!`,
                         'success'
                     );
                 }
             });
     };
 
-    const makeInstructor = (userId) => {
+    const makeInstructor = (user) => {
         const role = "instructor";
-        fetch(`http://localhost:5000/users/${userId}`, {
+        fetch(`http://localhost:5000/users/${user._id}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json",
@@ -72,7 +72,7 @@ function ManageUsers() {
                     fetchUsers();
                     Swal.fire(
                         'Good!',
-                        'Name is instructor now!',
+                        `${user?.name} is instructor now!`,
                         'success'
                     );
                 }
@@ -101,8 +101,8 @@ function ManageUsers() {
                                     <td>{user?.role}</td>
                                     <td>
                                         <ButtonGroup className='gap-2'>
-                                            <Button onClick={() => makeAdmin(user._id)}>Make Admin</Button>
-                                            <Button onClick={() => makeInstructor(user._id)}>Make Instructor</Button>
+                                            <Button onClick={() => makeAdmin(user)}>Make Admin</Button>
+                                            <Button onClick={() => makeInstructor(user)}>Make Instructor</Button>
                                         </ButtonGroup>
                                     </td>
                                 </tr>
