@@ -69,8 +69,6 @@ const Classes = () => {
         </Button></div>
     }
 
-
-
     return (
         <div className='container'>
             <h1>Classes</h1>
