@@ -42,8 +42,10 @@ const AddClass = () => {
           price,
           status: 'pending',
         };
+        // https://ass-12-server-eight.vercel.app/
 
-        fetch('https://ass-12-server-slsuyel.vercel.app/addclass', {
+     // fetch('https://ass-12-server-eight.vercel.app/addclass', {
+        fetch('https://ass-12-server-eight.vercel.app/addclass', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

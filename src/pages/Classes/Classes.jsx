@@ -16,7 +16,7 @@ const Classes = () => {
     // console.log(userRole);
     const navigate = useNavigate();
     useEffect(() => {
-        fetch('https://ass-12-server-slsuyel.vercel.app/addclass')
+        fetch('https://ass-12-server-eight.vercel.app/addclass')
             .then(res => res.json())
             .then(data => setClassesData(data))
             .catch(error => console.log(error));
@@ -32,7 +32,7 @@ const Classes = () => {
                 price: classData.price
             };
             // console.log(selectedClass);
-            fetch('https://ass-12-server-slsuyel.vercel.app/selectedClasses', {
+            fetch('https://ass-12-server-eight.vercel.app/selectedClasses', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

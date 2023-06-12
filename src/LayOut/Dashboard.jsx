@@ -62,8 +62,8 @@ const Dashboard = () => {
                                     <li> <NavLink className="fs-5 mx-2 text-decoration-none" to="/dashboard/enrolledclasses">
                                         <FaBook /> Enrolled Classes
                                     </NavLink></li>
-                                    <li>  <NavLink className="fs-5 mx-2 text-decoration-none" to="/dashboard/payment">
-                                        <FaMoneyCheck />   Payment
+                                    <li>  <NavLink className="fs-5 mx-2 text-decoration-none" to="/dashboard/paymenthistory">
+                                        <FaMoneyCheck />   Payment History
                                     </NavLink></li>
 
                                 </>

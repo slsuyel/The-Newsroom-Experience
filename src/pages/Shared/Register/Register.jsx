@@ -24,7 +24,7 @@ const Register = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const saveUser = { name: data.name, email: data.email, dp: data.photoURL }
-                        fetch('https://ass-12-server-slsuyel.vercel.app/users', {
+                        fetch('https://ass-12-server-eight.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

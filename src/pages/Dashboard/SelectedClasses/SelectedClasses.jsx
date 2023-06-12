@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import UseSelectClass from "../../hooks/UseSelectClass/UseSelectClass";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const SelectedClasses = () => {
     const [selectedClass, refetch] = UseSelectClass();
@@ -18,7 +19,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://ass-12-server-slsuyel.vercel.app/selectedClasses/${classItem._id}`, {
+                fetch(`https://ass-12-server-eight.vercel.app/selectedClasses/${classItem._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -40,7 +41,7 @@ const SelectedClasses = () => {
         <div>
             <h2 className="text-center">
                 My Selected Classes {selectedClass?.length}
-               
+
             </h2>
             <Table striped bordered hover size="sm">
                 <thead>
@@ -61,7 +62,7 @@ const SelectedClasses = () => {
                             <td>{classItem.instructorName}</td>
                             <td>{classItem.price}</td>
                             <td>
-                                <button className="btn btn-primary">Enroll now</button>
+                                <Link to='/dashboard/payment'><button className="btn btn-primary">Pay button</button></Link>
                             </td>
                             <td>
                                 <button onClick={() => handleDeleteClass(classItem)} className="btn btn-danger">

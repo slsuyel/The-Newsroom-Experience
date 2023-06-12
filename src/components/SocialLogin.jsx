@@ -18,7 +18,7 @@ const SocialLogin = () => {
                 const loggedInUser = result.user;
                 // console.log(loggedInUser);
                 const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
-                fetch('https://ass-12-server-slsuyel.vercel.app/users', {
+                fetch('https://ass-12-server-eight.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
