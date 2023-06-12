@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../../provider/AuthProviders";
 
-function PaymentList() {
+function EnrolledClasses() {
   const { user } = useContext(AuthContext);
   const [payments, setPayments] = useState([]);
 
@@ -34,25 +34,18 @@ function PaymentList() {
           <thead>
             <tr>
               <th>Class Name</th>
-        
+              <th>Instructor Name</th>
               <th>Price</th>
-           
-              <th>Transaction ID</th>
-              <th>Date</th>
-              <th>Order Status</th>
+              <th>Order Date</th>
             </tr>
           </thead>
           <tbody>
             {payments.map((payment) => (
               <tr key={payment._id}>
-                <td>{payment.classNames}</td>
-              
-                <td>{payment.price}</td>
-             
-                <td>{payment.transactionId}</td>
-                <td>{new Date(payment.date).toLocaleString()}</td>
-
-                <td>{payment.orderStatus}</td>
+                <td>{payment?.classNames}</td>
+                <td>{payment?.instructorName}</td>
+                <td>{payment?.price}</td>
+                <td>{new Date(payment?.date).toLocaleString()}</td>
               </tr>
             ))}
           </tbody>
@@ -62,4 +55,5 @@ function PaymentList() {
   );
 }
 
-export default PaymentList;
+
+export default EnrolledClasses;

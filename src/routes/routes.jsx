@@ -18,6 +18,7 @@ import PrivateRoute from "./PrivateRoute";
 import InstructorRoute from "./InstructorRoute";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentList from "../pages/Dashboard/PaymentList/PaymentList";
+import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
       {
         path: 'paymenthistory',
         element: <PaymentList />
+      },
+      {
+        path: 'enrolledclasses',
+        element: <EnrolledClasses />
       },
       {
         path: 'addclasses',

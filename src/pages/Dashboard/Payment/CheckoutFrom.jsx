@@ -81,6 +81,7 @@ const CheckoutFrom = ({ classItem }) => {
 
             const payment = {
                 classNames: classItem.className,
+                instructorName: classItem.instructorName,
                 classId: classItem._id,
                 price,
                 email: user?.email,
@@ -105,7 +106,7 @@ const CheckoutFrom = ({ classItem }) => {
                             text: "Your payment was successful!"
                         });
                         setTimeout(function () {
-                            navigate('/dashboard/selectedclasses')
+                            navigate('/dashboard/enrolledclasses')
                         }, 3000);
                     }
                 });
