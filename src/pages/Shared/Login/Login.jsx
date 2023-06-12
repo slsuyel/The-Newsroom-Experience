@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProviders';
@@ -11,24 +11,25 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const location = useLocation();
-
+    const [error, setError] = useState('')
     const from = location.state?.from?.pathname || "/";
 
     const onSubmit = (data) => {
+        setError('');
         const { email, password } = data;
         login(email, password)
             .then(result => {
                 const user = result.user;
-        
                 Swal.fire(
                     'Wow!',
-                    'you have successfully login!',
+                    'you have successfully logged in!',
                     'success'
-                  )
+                );
                 navigate(from, { replace: true });
-            });
+            })
+            .catch(error => setError(error.message));
     };
-/* border-2 border-bottom border-danger border-top col-md-4 mb-5 mx-auto py-2 text-center mt-5 */
+    /* border-2 border-bottom border-danger border-top col-md-4 mb-5 mx-auto py-2 text-center mt-5 */
     return (
         <div className='row mx-auto'>
             <h2 className='text-center mb-5 '>Login Page</h2>
@@ -75,13 +76,14 @@ const Login = () => {
                         )}
                     </div>
                     <div className="form-group">
+                        <p className='text-danger'>{error}</p>
                         <Link to="/register">Create an account</Link>
                     </div>
                     <div className="form-group my-2">
                         <button type="submit" className="btn btn-primary">Login</button>
                     </div>
                 </form>
-               <SocialLogin/>
+                <SocialLogin />
             </div>
         </div>
     );

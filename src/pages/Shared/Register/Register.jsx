@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -7,6 +7,7 @@ import SocialLogin from '../../../components/SocialLogin';
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
+    const [error,setError] =useState('')
     const navigate = useNavigate();
     const {
         register,
@@ -15,6 +16,7 @@ const Register = () => {
     } = useForm();
 
     const onSubmit = (data) => {
+        setError('')
         createUser(data.email, data.password)
             .then(result => {
 
@@ -47,8 +49,9 @@ const Register = () => {
                                 }
                             })
                     })
-                    .catch(error => console.log(error))
-            })
+                    .catch(error => console.log('--',error))
+                })
+                .catch(error => setError(error.message))
     };
 
     return (
@@ -124,6 +127,7 @@ const Register = () => {
                         {errors.photoUrl && <span className="text-danger">Photo URL is required</span>}
                     </div>
                     <div className="form-group">
+                        <p className='text-danger'>{error}</p>
                         <Link to="/login">Already have an account</Link>
                     </div>
                     <button type="submit" className="btn btn-primary my-2">Register</button>
