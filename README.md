@@ -17,7 +17,7 @@ The Newsroom Experience web application offers the following features:
 
 - **Popular Classes Section**: Display relevant pictures related to the classes or activities. Show the top 6 classes based on the number of students.
 
-- **Popular Instructors Section**: Display relevant pictures related to the instructors. Show the top 6 instructors based on the number of students in their class. (Optional: Selecting top instructors based on the number of students)
+- **Popular Instructors Section**: Display relevant pictures related to the instructors. Show the top 6 instructors based on the number of students in their class.
 
 **Student Dashboard**:
 - **My Selected Classes**: Display the classes the student has booked, including relevant information. Provide options to delete or pay for a selected class.
