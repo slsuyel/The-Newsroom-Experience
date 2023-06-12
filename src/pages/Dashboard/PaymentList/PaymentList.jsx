@@ -4,6 +4,7 @@ import { AuthContext } from "../../../provider/AuthProviders";
 function PaymentList() {
   const { user } = useContext(AuthContext);
   const [payments, setPayments] = useState([]);
+  const token = localStorage.getItem("access-token");
 
   useEffect(() => {
     if (user?.email) {
@@ -13,7 +14,15 @@ function PaymentList() {
 
   const handleGetPayments = async () => {
     try {
-      const response = await fetch(`https://ass-12-server-eight.vercel.app/payments?email=${user?.email}`);
+      const response = await fetch(`https://ass-12-server-eight.vercel.app/payments?email=${user?.email}`,
+
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          }
+        }
+
+      );
       if (response.ok) {
         const data = await response.json();
         setPayments(data);
@@ -27,16 +36,16 @@ function PaymentList() {
 
   return (
     <div>
-      <h1>Payment history</h1>
+      <h1 className="text-center">Payment history</h1>
       <div>
-        <h2>Payments:</h2>
+
         <table className="table">
           <thead>
             <tr>
               <th>Class Name</th>
-        
+
               <th>Price</th>
-           
+
               <th>Transaction ID</th>
               <th>Date</th>
               <th>Order Status</th>
@@ -46,9 +55,9 @@ function PaymentList() {
             {payments.map((payment) => (
               <tr key={payment._id}>
                 <td>{payment.classNames}</td>
-              
+
                 <td>{payment.price}</td>
-             
+
                 <td>{payment.transactionId}</td>
                 <td>{new Date(payment.date).toLocaleString()}</td>
 

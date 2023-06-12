@@ -4,14 +4,18 @@ import Swal from 'sweetalert2';
 
 function ManageUsers() {
     const [users, setUsers] = useState([]);
-
+    const token = localStorage.getItem("access-token");
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = async () => {
         try {
-            const response = await fetch('https://ass-12-server-eight.vercel.app/users');
+            const response = await fetch('https://ass-12-server-eight.vercel.app/users', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            });
             if (!response.ok) {
                 throw new Error('Failed to fetch users');
             }
@@ -27,6 +31,7 @@ function ManageUsers() {
             method: 'PUT',
             headers: {
                 "content-type": "application/json",
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({ role })
         })
@@ -89,5 +94,3 @@ function ManageUsers() {
 }
 
 export default ManageUsers;
-
-

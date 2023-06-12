@@ -27,7 +27,8 @@ const Register = () => {
                         fetch('https://ass-12-server-eight.vercel.app/users', {
                             method: 'POST',
                             headers: {
-                                'content-type': 'application/json'
+                                'content-type': 'application/json',
+                                'Authorization': `Bearer ${localStorage.getItem("access-token")}`,
                             },
                             body: JSON.stringify(saveUser)
                         })

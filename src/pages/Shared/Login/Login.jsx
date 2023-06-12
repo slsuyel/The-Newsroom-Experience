@@ -1,10 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProviders';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../../components/SocialLogin';
-
 
 const Login = () => {
     const { login } = useContext(AuthContext);
@@ -19,7 +19,7 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+        
                 Swal.fire(
                     'Wow!',
                     'you have successfully login!',

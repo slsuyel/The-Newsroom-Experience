@@ -4,16 +4,20 @@ import { AuthContext } from "../../../provider/AuthProviders";
 function EnrolledClasses() {
   const { user } = useContext(AuthContext);
   const [payments, setPayments] = useState([]);
-
+  const token = localStorage.getItem("access-token");
   useEffect(() => {
     if (user?.email) {
       handleGetPayments();
     }
-  }, [user]);
+  }, []);
 
   const handleGetPayments = async () => {
     try {
-      const response = await fetch(`https://ass-12-server-eight.vercel.app/payments?email=${user?.email}`);
+      const response = await fetch(`https://ass-12-server-eight.vercel.app/payments?email=${user?.email}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      })
       if (response.ok) {
         const data = await response.json();
         setPayments(data);
@@ -27,9 +31,8 @@ function EnrolledClasses() {
 
   return (
     <div>
-      <h1>Payment history</h1>
+      <h1 className="text-center">Enrolled Classes</h1>
       <div>
-        <h2>Payments:</h2>
         <table className="table">
           <thead>
             <tr>

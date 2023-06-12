@@ -7,6 +7,7 @@ import './checkout.css'
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 const CheckoutFrom = ({ classItem }) => {
+    const token = localStorage.getItem("access-token")
     const navigate = useNavigate()
     const price = classItem?.price
     const { user } = useContext(AuthContext)
@@ -20,7 +21,10 @@ const CheckoutFrom = ({ classItem }) => {
         // Create PaymentIntent as soon as the page loads
         fetch("https://ass-12-server-eight.vercel.app/create-payment-intent", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
             body: JSON.stringify({ price }),
         })
             .then((res) => res.json())
@@ -93,7 +97,8 @@ const CheckoutFrom = ({ classItem }) => {
             fetch('https://ass-12-server-eight.vercel.app/payments', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'content-type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
                 },
                 body: JSON.stringify(payment),
             })

@@ -1,15 +1,40 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
+import Spinner from 'react-bootstrap/Spinner';
+import { Button } from 'react-bootstrap';
 
-const Instructors = () => {
+const Instructors = ({ baseUrl }) => {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://ass-12-server-eight.vercel.app/addclass')
-      .then(response => response.json())
-      .then(jsonData => setData(jsonData))
-      .catch(error => console.log(error));
-  }, []);
+    fetch(`${baseUrl}/addclass`)
+      .then(res => res.json())
+      .then(data => {
+        setData(data);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.log(error);
+        setIsLoading(false);
+      });
+  }, [baseUrl]);
+
+  if (isLoading) {
+    return (
+      <div className="text-center mt-5"><Button variant="primary" disabled >
+        <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        Loading...
+      </Button></div>
+    );
+  }
 
   return (
     <div className='container'>
@@ -26,15 +51,13 @@ const Instructors = () => {
           {data.map((instructor, index) => (
             <tr key={index}>
               <td>
-              <img
-  src={instructor.photoURL || "https://www.svgrepo.com/show/500470/avatar.svg"}
-  alt="Instructor"
-  width={'40px'}
-  height={'40px'}
-  className='rounded-circle '
-/>
-
-
+                <img
+                  src={instructor.photoURL || "https://www.svgrepo.com/show/500470/avatar.svg"}
+                  alt="Instructor"
+                  width={'40px'}
+                  height={'40px'}
+                  className='rounded-circle '
+                />
               </td>
               <td>{instructor?.instructorName}</td>
               <td>{instructor?.instructorEmail}</td>

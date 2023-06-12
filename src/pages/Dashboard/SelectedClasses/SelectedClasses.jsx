@@ -1,12 +1,28 @@
 
-import { Table } from "react-bootstrap";
+import { Button, Spinner, Table } from "react-bootstrap";
 import UseSelectClass from "../../hooks/UseSelectClass/UseSelectClass";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-
+import { baseUrl } from '../../../baseUrl/baseUrl'
 const SelectedClasses = () => {
-    const [selectedClass, refetch] = UseSelectClass();
+    const [selectedClass, refetch, isLoading] = UseSelectClass();
+    const token = localStorage.getItem("access-token")
+
+    if (isLoading) {
+        return (
+            <div className="text-center mt-5"><Button variant="primary" disabled >
+                <Spinner
+                    as="span"
+                    animation="grow"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                />
+                Loading...
+            </Button></div>
+        );
+    }
 
     const handleDeleteClass = classItem => {
         Swal.fire({
@@ -19,8 +35,12 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://ass-12-server-eight.vercel.app/selectedClasses/${classItem._id}`, {
-                    method: 'DELETE'
+                fetch(`${baseUrl}/selectedClasses/${classItem._id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+
                 })
                     .then(res => res.json())
                     .then(data => {
@@ -55,7 +75,7 @@ const SelectedClasses = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {selectedClass.map((classItem, index) => (
+                    {selectedClass?.map((classItem, index) => (
                         <tr key={classItem._id}>
                             <td>{index + 1}</td>
                             <td>{classItem.className}</td>

@@ -16,12 +16,13 @@ const SocialLogin = () => {
         googleLogin()
             .then(result => {
                 const loggedInUser = result.user;
-                // console.log(loggedInUser);
+                console.log(loggedInUser);
                 const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
                 fetch('https://ass-12-server-eight.vercel.app/users', {
                     method: 'POST',
                     headers: {
-                        'content-type': 'application/json'
+                        'content-type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem("access-token")}`,
                     },
                     body: JSON.stringify(saveUser)
                 })

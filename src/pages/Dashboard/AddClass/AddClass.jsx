@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const AddClass = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const [className, setClassName] = useState('');
   const [classImage, setClassImage] = useState(null); // Store the selected image file
   const [availableSeats, setAvailableSeats] = useState(0);
@@ -42,13 +42,12 @@ const AddClass = () => {
           price,
           status: 'pending',
         };
-        // https://ass-12-server-eight.vercel.app/
 
-     // fetch('https://ass-12-server-eight.vercel.app/addclass', {
         fetch('https://ass-12-server-eight.vercel.app/addclass', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("access-token")}`,
           },
           body: JSON.stringify(newClass),
         })

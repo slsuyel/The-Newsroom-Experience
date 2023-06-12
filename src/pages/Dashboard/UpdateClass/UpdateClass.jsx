@@ -22,6 +22,7 @@ const UpdateClass = () => {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
+                'Authorization': `Bearer ${localStorage.getItem("access-token")}`,
             },
             body: JSON.stringify({
                 className,

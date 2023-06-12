@@ -20,7 +20,7 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentList from "../pages/Dashboard/PaymentList/PaymentList";
 import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses";
 import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass";
-
+const baseUrl = 'https://ass-12-server-eight.vercel.app';
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -41,11 +41,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/instructors",
-        element: <Instructors />,
+        element: <Instructors baseUrl={baseUrl} />,
       },
       {
         path: "/class",
-        element: <Classes />,
+        element: <Classes baseUrl={baseUrl} />,
       },
 
     ],

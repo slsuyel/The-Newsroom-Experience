@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect, useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -9,18 +10,37 @@ import Swal from 'sweetalert2';
 import UseUserRole from '../hooks/UseUserRole/UseUserRole';
 import { Spinner } from 'react-bootstrap';
 
-const Classes = () => {
+const Classes = ({ baseUrl }) => {
+    const token = localStorage.getItem("access-token")
+    const [isLoading, setIsLoading] = useState(true);
     const [classesData, setClassesData] = useState([]);
     const { user } = useContext(AuthContext);
     const [userRole, isUserRoleLoading] = UseUserRole()
     // console.log(userRole);
     const navigate = useNavigate();
     useEffect(() => {
-        fetch('https://ass-12-server-eight.vercel.app/addclass')
+        fetch(`${baseUrl}/addclass`)
             .then(res => res.json())
-            .then(data => setClassesData(data))
-            .catch(error => console.log(error));
-    }, []);
+            .then(data => {
+                setClassesData(data)
+                setIsLoading(false);
+            })
+    }, [baseUrl]);
+
+    if (isLoading) {
+        return (
+            <div className="text-center mt-5"><Button variant="primary" disabled >
+                <Spinner
+                    as="span"
+                    animation="grow"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                />
+                Loading...
+            </Button></div>
+        );
+    }
     const handleSelectClass = (classData) => {
         if (user && user?.email) {
             const selectedClass = {
@@ -32,10 +52,12 @@ const Classes = () => {
                 price: classData.price
             };
             // console.log(selectedClass);
+
             fetch('https://ass-12-server-eight.vercel.app/selectedClasses', {
                 method: 'POST',
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
                 },
                 body: JSON.stringify(selectedClass)
             })

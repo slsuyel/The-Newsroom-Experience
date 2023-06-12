@@ -33,6 +33,7 @@ const ManageClassesAdmin = () => {
       method: 'PATCH',
       headers: {
         "content-type": "application/json",
+        'Authorization': `Bearer ${localStorage.getItem("access-token")}`,
       },
       body: JSON.stringify({ status: "approved" })
     })
@@ -55,6 +56,7 @@ const ManageClassesAdmin = () => {
       method: 'PATCH',
       headers: {
         "content-type": "application/json",
+        'Authorization': `Bearer ${localStorage.getItem("access-token")}`,
       },
       body: JSON.stringify({ status: "denied" })
     })
@@ -86,6 +88,7 @@ const ManageClassesAdmin = () => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("access-token")}`,
       },
       body: JSON.stringify({ feedback }),
     })

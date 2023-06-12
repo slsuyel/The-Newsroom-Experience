@@ -11,6 +11,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -47,8 +48,23 @@ const AuthProviders = ({ children }) => {
         setName(loggedUser.displayName);
         setPhoto(loggedUser.photoURL);
       }
-      setLoading(false);
+
+      if (loggedUser) {
+        axios.post('https://ass-12-server-eight.vercel.app/jwt', { email: loggedUser.email })
+          .then(data => {
+            localStorage.setItem('access-token', data.data.token)
+            setLoading(false);
+          })
+      }
+      else {
+        localStorage.removeItem('access-token')
+      }
+
     });
+
+
+
+
     return () => {
       unsubscribe();
     };
