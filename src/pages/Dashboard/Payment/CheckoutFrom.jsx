@@ -82,7 +82,7 @@ const CheckoutFrom = ({ classItem }) => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 date: new Date(),
-                status: ' pending',
+                orderStatus: 'Order pending',
             }
             console.log(paymentIntent.status, payment);
         }
