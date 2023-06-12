@@ -4,7 +4,10 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProviders";
 import './checkout.css'
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const CheckoutFrom = ({ classItem }) => {
+    const navigate = useNavigate()
     const price = classItem?.price
     const { user } = useContext(AuthContext)
     const stripe = useStripe()
@@ -94,7 +97,18 @@ const CheckoutFrom = ({ classItem }) => {
                 body: JSON.stringify(payment),
             })
                 .then((res) => res.json())
-                .then((data) => console.log(data));
+                .then((data) => {
+                    if (data.insertResult.insertedId) {
+                        // console.log(data.insertResult.insertedId)
+                        Swal.fire({
+                            icon: 'success',
+                            text: "Your payment was successful!"
+                        });
+                        setTimeout(function () {
+                            navigate('/dashboard/selectedclasses')
+                        }, 3000);
+                    }
+                });
         }
 
     }
