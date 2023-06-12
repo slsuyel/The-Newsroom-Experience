@@ -3,7 +3,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProviders";
-
+import './checkout.css'
 const CheckoutFrom = ({ classItem }) => {
     const price = classItem.price
     const { user } = useContext(AuthContext)
