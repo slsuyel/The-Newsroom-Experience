@@ -17,6 +17,7 @@ import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import InstructorRoute from "./InstructorRoute";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import PaymentList from "../pages/Dashboard/PaymentList/PaymentList";
 
 export const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
       {
         path: 'payment/:id',
         element: <Payment />
+      },
+      {
+        path: 'paymenthistory',
+        element: <PaymentList />
       },
       {
         path: 'addclasses',
