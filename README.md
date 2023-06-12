@@ -4,6 +4,10 @@ Welcome to the Summer Camp Learning School project, **The Newsroom Experience**.
 
 The project is built using the MERN stack (MongoDB, Express.js, React.js, and Node.js) along with Firebase and Vercel for deployment. It provides a comprehensive learning platform where students can explore journalism, news reporting, and media production in a fun and educational way.
 
+## Live Link
+[The Newsroom Experience](https://ass-12-5ec7c.web.app/)
+
+
 ## Features
 
 The Newsroom Experience web application offers the following features:
@@ -28,3 +32,17 @@ The Newsroom Experience web application offers the following features:
 **Admin Dashboard**:
 - **Manage Classes**: Display all classes added by instructors, including class image, class name, instructor name, instructor email, available seats, price, and status (pending/approved/denied). Provide buttons for approving, denying, and sending feedback.
 - **Manage Users**: Allow the admin to view relevant information of all registered users. By default, all users are students. The admin can make users instructors or admins by clicking the respective buttons, which will then be disabled.
+
+## Tech Stack
+
+**Client:** React,React Bootstrap
+
+**Server:** Node, Express
+
+## Authentication , Deployment & Payment
+
+Firebase Authentication: Firebase Authentication is used for user authentication in your project. It provides a secure and easy-to-use solution for handling user registration, login, and account management. With Firebase Authentication, you can implement various authentication methods, including email/password, social login, and more.
+
+Vercel: Vercel is used for server deployment in your project. It's a cloud platform that enables seamless deployment and hosting of your server-side code. Vercel supports popular frameworks like Next.js and provides automatic scaling, easy configuration, and built-in features for deploying serverless functions. With Vercel, you can easily deploy your server code and ensure reliable and scalable hosting for your application.
+
+Payment by Stripe
