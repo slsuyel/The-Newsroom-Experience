@@ -1,5 +1,6 @@
 import { Button, Spinner, Table } from "react-bootstrap";
 import useAddClass from "../../hooks/useAddClass/useAddClass";
+import { Link } from "react-router-dom";
 
 const MyClassInstructure = () => {
     // eslint-disable-next-line no-unused-vars
@@ -53,7 +54,7 @@ const MyClassInstructure = () => {
 
                                 </td>
                                 <td>
-                                    <button onClick={() => handleUpdateClass(classItem)} className="btn-primary btn">Update class</button>
+                                    <Link to={`/dashboard/classupdate/${classItem._id}`}><button onClick={() => handleUpdateClass(classItem)} className="btn-primary btn">Update class</button></Link>
                                 </td>
                             </tr>
                         ))

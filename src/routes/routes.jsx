@@ -19,6 +19,7 @@ import InstructorRoute from "./InstructorRoute";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentList from "../pages/Dashboard/PaymentList/PaymentList";
 import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses";
+import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass";
 
 export const router = createBrowserRouter([
   {
@@ -59,15 +60,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'selectedclasses',
-        element: <SelectedClasses />
+        element:<PrivateRoute> <SelectedClasses /></PrivateRoute>
       },
       {
         path: 'payment/:id',
-        element: <Payment />
+        element: <PrivateRoute><Payment /></PrivateRoute>
       },
       {
         path: 'paymenthistory',
-        element: <PaymentList />
+        element: <PrivateRoute><PaymentList /></PrivateRoute>
       },
       {
         path: 'enrolledclasses',
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
       {
         path: 'myclasses',
         element: <InstructorRoute><MyClassInstructure /></InstructorRoute>
+      },
+      {
+        path: 'classupdate/:id',
+        element: <InstructorRoute><UpdateClass /></InstructorRoute>
       },
       {
         path: 'manageclasses',
