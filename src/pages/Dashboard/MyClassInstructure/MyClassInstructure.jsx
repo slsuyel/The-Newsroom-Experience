@@ -18,13 +18,6 @@ const MyClassInstructure = () => {
         </Button></div>
     }
 
-    const handleUpdateClass = (classItem) => {
-        /*need update : className, availableSeats,price*/
-        console.log(classItem);
-    }
-
-
-
     return (
         <div>
             <Table striped bordered hover>
@@ -54,7 +47,7 @@ const MyClassInstructure = () => {
 
                                 </td>
                                 <td>
-                                    <Link to={`/dashboard/classupdate/${classItem._id}`}><button onClick={() => handleUpdateClass(classItem)} className="btn-primary btn">Update class</button></Link>
+                                    <Link to={`/dashboard/classupdate/${classItem._id}`}><button  className="btn-primary btn">Update class</button></Link>
                                 </td>
                             </tr>
                         ))
