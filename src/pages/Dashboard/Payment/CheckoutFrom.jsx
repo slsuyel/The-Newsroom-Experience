@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProviders";
 import './checkout.css'
 const CheckoutFrom = ({ classItem }) => {
-    const price = classItem.price
+    const price = classItem?.price
     const { user } = useContext(AuthContext)
     const stripe = useStripe()
     const elements = useElements()
@@ -75,17 +75,28 @@ const CheckoutFrom = ({ classItem }) => {
         setProcessing(false)
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
-            // save payment information to the server
+
             const payment = {
                 classNames: classItem.className,
+                classId: classItem._id,
                 price,
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 date: new Date(),
                 orderStatus: 'Order pending',
-            }
-            console.log(paymentIntent.status, payment);
+            };
+
+            fetch('http://localhost:5000/payments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payment),
+            })
+                .then((res) => res.json())
+                .then((data) => console.log(data));
         }
+
     }
 
     return (

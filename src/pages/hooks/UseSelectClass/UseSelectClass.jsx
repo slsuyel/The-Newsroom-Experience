@@ -6,7 +6,7 @@ const UseSelectClass = () => {
     const {refetch, data : selectedClass = [] } = useQuery({
         queryKey: ["selectedClasses", user?.email],
         queryFn: async () => {
-            const res = await fetch(`https://ass-12-server-eight.vercel.app/selectedClasses?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/selectedClasses?email=${user?.email}`)
             return res.json()
         },
     })
