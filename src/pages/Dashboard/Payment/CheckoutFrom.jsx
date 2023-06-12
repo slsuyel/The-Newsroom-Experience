@@ -1,12 +1,26 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const CheckoutFrom = () => {
+const CheckoutFrom = ({ price }) => {
     const stripe = useStripe()
     const elements = useElements()
     const [cardError, setCardError] = useState('');
+    const [clientSecret, setClientSecret] = useState("");
 
+    useEffect(() => {
+        // Create PaymentIntent as soon as the page loads
+        fetch("https://ass-12-server-eight.vercel.app/create-payment-intent", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ price }),
+        })
+            .then((res) => res.json())
+            .then((data) => setClientSecret(data.clientSecret));
+    }, [price]);
+
+    console.log(clientSecret);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -56,7 +70,7 @@ const CheckoutFrom = () => {
                         },
                     }}
                 />
-                <button className="btn btn-primary m-3" type="submit" disabled={!stripe}>
+                <button className="btn btn-primary m-3" type="submit" disabled={!stripe || !clientSecret }>
                     Pay
                 </button>
             </form>
