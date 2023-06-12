@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Summer Camp Learning School - The Newsroom Experience
 
 Welcome to the Summer Camp Learning School project, **The Newsroom Experience**. This project aims to create an interactive web application that simulates a newsroom experience for summer camp students. 
@@ -47,6 +47,6 @@ Firebase Authentication: Firebase Authentication is used for user authentication
 Vercel: Vercel is used for server deployment in your project. It's a cloud platform that enables seamless deployment and hosting of your server-side code. Vercel supports popular frameworks like Next.js and provides automatic scaling, easy configuration, and built-in features for deploying serverless functions. With Vercel, you can easily deploy your server code and ensure reliable and scalable hosting for your application.
 
 Payment by Stripe
-=======
 
->>>>>>> 7609bab3dc00fbfce4e086e3b1fdfe75904c44c9
+
+
