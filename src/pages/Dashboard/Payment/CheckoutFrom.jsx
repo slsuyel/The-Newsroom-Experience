@@ -89,7 +89,7 @@ const CheckoutFrom = ({ classItem }) => {
                 orderStatus: 'Order pending',
             };
 
-            fetch('http://localhost:5000/payments', {
+            fetch('https://ass-12-server-eight.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
