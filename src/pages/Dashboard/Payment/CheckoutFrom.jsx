@@ -1,14 +1,18 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../provider/AuthProviders";
 
-const CheckoutFrom = ({ price }) => {
+const CheckoutFrom = ({ classItem }) => {
+    const price = classItem.price
+    const { user } = useContext(AuthContext)
     const stripe = useStripe()
     const elements = useElements()
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState("");
-
+    const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState('');
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
         fetch("https://ass-12-server-eight.vercel.app/create-payment-intent", {
@@ -20,7 +24,7 @@ const CheckoutFrom = ({ price }) => {
             .then((data) => setClientSecret(data.clientSecret));
     }, [price]);
 
-    console.log(clientSecret);
+    // console.log(clientSecret);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -40,15 +44,48 @@ const CheckoutFrom = ({ price }) => {
         })
 
         if (error) {
-            console.log('error', error)
+            // console.log('error', error)
             setCardError(error.message);
         }
         else {
             setCardError('');
-            console.log('payment method', paymentMethod)
+            // console.log('payment method', paymentMethod)
         }
 
+        setProcessing(true)
 
+
+
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        email: user?.email || 'unknown',
+                        name: user?.displayName || 'anonymous'
+                    },
+                },
+            },
+        );
+
+        if (confirmError) {
+            console.log(confirmError);
+        }
+        setProcessing(false)
+        if (paymentIntent.status === 'succeeded') {
+            setTransactionId(paymentIntent.id);
+            // save payment information to the server
+            const payment = {
+                classNames: classItem.className,
+                price,
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                date: new Date(),
+                status: ' pending',
+            }
+            console.log(paymentIntent.status, payment);
+        }
     }
 
     return (
@@ -70,11 +107,12 @@ const CheckoutFrom = ({ price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary m-3" type="submit" disabled={!stripe || !clientSecret }>
+                <button className="btn btn-primary m-3" type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
             <p className="text-center text-danger"> {cardError}</p>
+            {transactionId && <p className="text-primary text-center">Transaction complete with transactionId: {transactionId}</p>}
         </div>
     );
 };

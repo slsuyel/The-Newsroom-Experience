@@ -7,11 +7,12 @@ import UseSelectClass from "../../hooks/UseSelectClass/UseSelectClass";
 const Payment = () => {
     const { id } = useParams();
     // console.log(id);
-    const [selectedClass, ] = UseSelectClass()
+    const [selectedClass,] = UseSelectClass()
     // console.log(selectedClass);
 
-    const price = selectedClass.find(item => item._id === id)?.price;
-    // console.log(typeof(price));
+    // const price = selectedClass.find(item => item._id === id)?.price;
+    const classItem = selectedClass.find(item => item._id === id);
+    //  console.log(classItem)
 
     const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
 
@@ -19,7 +20,7 @@ const Payment = () => {
         <div>
             <h2 className="text-center">Payment now</h2>
             <Elements stripe={stripePromise}>
-                <CheckoutFrom price ={price}/>
+                <CheckoutFrom classItem={classItem} />
             </Elements>
         </div>
     );
