@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
         element: <SelectedClasses />
       },
       {
-        path: 'payment',
+        path: 'payment/:id',
         element: <Payment />
       },
       {
