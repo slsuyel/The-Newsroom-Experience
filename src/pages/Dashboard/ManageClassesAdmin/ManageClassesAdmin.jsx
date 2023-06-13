@@ -140,8 +140,8 @@ const ManageClassesAdmin = () => {
                 <td className="text-center">
                   {/* any btn will clicked , 2 btn will be disable*/}
                   <button onClick={() => handleApprovedClass(item._id)}
-
-                    className="btn rounded-2 text-bg-success">
+                    className="btn rounded-2 text-bg-success"
+                    disabled={item?.status === 'approved' || item?.status === 'denied'}>
                     <FaCheckCircle />
                   </button>
                 </td>
@@ -149,8 +149,8 @@ const ManageClassesAdmin = () => {
 
                   <button onClick={() => handleDenyBtn(item._id)}
                     className="btn btn-danger"
-
-                  >
+          disabled={item?.status === 'approved' || item?.status === 'denied'}>
+                  
                     <FaBan />
                   </button>
                 </td>
