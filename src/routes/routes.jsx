@@ -47,7 +47,6 @@ export const router = createBrowserRouter([
         path: "/class",
         element: <Classes baseUrl={baseUrl} />,
       },
-
     ],
   },
   {
@@ -60,7 +59,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'selectedclasses',
-        element:<PrivateRoute> <SelectedClasses /></PrivateRoute>
+        element: <PrivateRoute> <SelectedClasses /></PrivateRoute>
       },
       {
         path: 'payment/:id',

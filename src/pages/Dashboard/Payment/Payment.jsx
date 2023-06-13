@@ -8,9 +8,6 @@ const Payment = () => {
     const { id } = useParams();
     // console.log(id);
     const [selectedClass,] = UseSelectClass()
-    // console.log(selectedClass);
-
-    // const price = selectedClass.find(item => item._id === id)?.price;
     const classItem = selectedClass.find(item => item._id === id);
     //  console.log(classItem)
 

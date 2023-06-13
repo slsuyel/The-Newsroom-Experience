@@ -104,8 +104,8 @@ const CheckoutFrom = ({ classItem }) => {
             })
                 .then((res) => res.json())
                 .then((data) => {
+                    console.log(data)
                     if (data.insertResult.insertedId) {
-                        // console.log(data.insertResult.insertedId)
                         Swal.fire({
                             icon: 'success',
                             text: "Your payment was successful!"
