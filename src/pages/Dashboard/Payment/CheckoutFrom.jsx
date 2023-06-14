@@ -6,7 +6,9 @@ import { AuthContext } from "../../../provider/AuthProviders";
 import './checkout.css'
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+
 const CheckoutFrom = ({ classItem }) => {
+    //  console.log('classItem', classItem?.totalEnroll);
     const token = localStorage.getItem("access-token")
     const navigate = useNavigate()
     const price = classItem?.price
@@ -84,10 +86,13 @@ const CheckoutFrom = ({ classItem }) => {
             setTransactionId(paymentIntent.id);
 
             const payment = {
-                classNames: classItem.className,
+                classNames: classItem?.className,
                 instructorName: classItem.instructorName,
                 classId: classItem._id,
+                availableSeats: parseInt(classItem.availableSeats),
+               
                 price,
+                main_id: classItem.selectedId,
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 date: new Date(),

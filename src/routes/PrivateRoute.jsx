@@ -8,7 +8,7 @@ import { Button, Spinner } from "react-bootstrap";
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
-    console.log(user);
+    // console.log(user);
     if (loading) {
         return <div className="text-center mt-5"><Button variant="primary" disabled >
             <Spinner

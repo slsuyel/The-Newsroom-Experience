@@ -16,7 +16,7 @@ const Classes = ({ baseUrl }) => {
     const [classesData, setClassesData] = useState([]);
     const { user } = useContext(AuthContext);
     const [userRole, isUserRoleLoading] = UseUserRole()
-    // console.log(userRole);
+    //  console.log(classesData);
     const navigate = useNavigate();
     useEffect(() => {
         fetch(`${baseUrl}/addclass`)
