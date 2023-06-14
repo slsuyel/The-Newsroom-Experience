@@ -110,7 +110,7 @@ const Classes = ({ baseUrl }) => {
                                     <br />
                                     Price: {classInfo.price}
                                 </Card.Text>
-                                <Button disabled={userRole === 'admin' || userRole === 'instructor' || classInfo.availableSeats === 0} onClick={() => handleSelectClass(classInfo)}> Select   </Button>
+                                <Button disabled={userRole === 'admin' || userRole === 'instructor' || classInfo.availableSeats == 0} onClick={() => handleSelectClass(classInfo)}> Select   </Button>
                                 
                             </Card.Body>
                         </Card>
