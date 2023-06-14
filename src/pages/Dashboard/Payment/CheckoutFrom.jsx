@@ -87,10 +87,10 @@ const CheckoutFrom = ({ classItem }) => {
 
             const payment = {
                 classNames: classItem?.className,
-                instructorName: classItem.instructorName,
+                instructorName: classItem?.instructorName,
                 classId: classItem._id,
-                availableSeats: parseInt(classItem.availableSeats),
-               
+                availableSeats: parseInt(classItem?.availableSeats),
+                totalEnroll : parseInt(classItem?.totalEnroll || 0),
                 price,
                 main_id: classItem.selectedId,
                 email: user?.email,

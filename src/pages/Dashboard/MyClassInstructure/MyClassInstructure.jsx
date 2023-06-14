@@ -38,7 +38,7 @@ const MyClassInstructure = () => {
                             <tr key={classItem._id}>
                                 <td>{classItem.className}</td>
                                 <td>{classItem.availableSeats || 0}</td>
-                                <td>{classItem?.totalenrolled || 0}</td>
+                                <td>{classItem?.totalEnroll || 0}</td>
                                 <td>{classItem?.status}</td>
                                 <td>
                                     {

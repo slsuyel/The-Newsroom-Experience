@@ -49,6 +49,7 @@ const Classes = ({ baseUrl }) => {
                 className: classData.className,
                 instructorName: classData.instructorName,
                 availableSeats: classData.availableSeats,
+                totalEnroll : parseInt(classData.totalEnroll || 0),
                 price: classData.price
             };
             // console.log(selectedClass);
