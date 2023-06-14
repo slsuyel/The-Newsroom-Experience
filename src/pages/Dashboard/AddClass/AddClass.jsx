@@ -34,6 +34,7 @@ const AddClass = () => {
 
         const newClass = {
           className,
+          totalEnroll :parseInt(0),
           classImage: imageUrl,
           instructorName: user?.displayName,
           photoURL: user?.photoURL,

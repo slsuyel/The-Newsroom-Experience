@@ -44,7 +44,6 @@ const MyClassInstructure = () => {
                                     {
                                         classItem?.status === "denied" ? classItem?.feedback : ''
                                     }
-
                                 </td>
                                 <td>
                                     <Link to={`/dashboard/classupdate/${classItem._id}`}><button  className="btn-primary btn">Update class</button></Link>
