@@ -94,12 +94,12 @@ const Classes = ({ baseUrl }) => {
 
     return (
         <div className='container'>
-            <h1 className='border-2 border-bottom border-danger border-top col-md-4 mb-5 mx-auto py-2 text-center mt-5'>Classes</h1>
+            <h1 className='border-2 border-bottom border-danger border-top col-md-4 mb-5 mx-auto py-2 text-center mt-5 '>Classes</h1>
 
             <Row>
                 {classesData.map((classInfo) => (
                     <Col md={4} key={classInfo._id}>
-                        <Card className='my-2'>
+                        <Card className={`my-2 ${classInfo.availableSeats == 0 ? 'bg-danger-subtle border-danger text-danger-emphasis' : ''}`}>
                             <Card.Img variant='top' src={classInfo.classImage} alt='Class' height={'200px'} />
                             <Card.Body>
                                 <Card.Title>{classInfo.className}</Card.Title>
