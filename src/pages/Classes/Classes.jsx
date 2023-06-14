@@ -49,7 +49,7 @@ const Classes = ({ baseUrl }) => {
                 className: classData.className,
                 instructorName: classData.instructorName,
                 availableSeats: classData.availableSeats,
-                totalEnroll : parseInt(classData.totalEnroll || 0),
+                totalEnroll: parseInt(classData.totalEnroll || 0),
                 price: classData.price
             };
             // console.log(selectedClass);
@@ -110,8 +110,8 @@ const Classes = ({ baseUrl }) => {
                                     <br />
                                     Price: {classInfo.price}
                                 </Card.Text>
-                                <Button disabled={userRole === 'admin' || userRole === 'instructor'} onClick={() => handleSelectClass(classInfo)}> Select   </Button>
-
+                                <Button disabled={userRole === 'admin' || userRole === 'instructor' || classInfo.availableSeats === 0} onClick={() => handleSelectClass(classInfo)}> Select   </Button>
+                                
                             </Card.Body>
                         </Card>
                     </Col>
